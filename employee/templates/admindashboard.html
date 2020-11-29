@@ -1,0 +1,104 @@
+{% include 'base.html' %}
+
+{% block content %}
+
+
+<div class="col-lg-12">
+    <div class="col-lg-3 card">
+        <div class="card-inner" style="background-color: #76448A">
+            <div class="value">{{ total_members }}</div>
+            <div class="text">Employees</div>
+        </div>
+
+    </div>
+    <div class="col-lg-3 card">
+        <div class="card-inner" style="background-color: #bd0284">
+            <div class="value">{{ count_female }}</div>
+            <div class="text">Female</div>
+        </div>
+    </div>
+    <div class="col-lg-3 card">
+        <div class="card-inner" style="background-color: #495aad">
+            <div class="value">{{ count_male }}</div>
+            <div class="text">Male</div>
+        </div>
+    </div>
+    <div class="col-lg-3 card">
+        <div class="card-inner" style="background-color: #306b2d">
+            <div class="value">{{ count_oth }}</div>
+            <div class="text">Others</div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-12">
+    <div class="col-lg-12" style="float:left;">
+        <div style="float:right;">
+            <a class="btn btn-outline-info" href="{% url 'employee:create_user' %}">+Add User</a>
+        </div>
+    </div>
+
+
+    <div  class="col-lg-12" style="float:left;">
+        <table class="table" style="margin-top:15px;" >
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for member in members %}
+            <tr>
+                <td>{{member.first_name}} {{member.last_name}}</td>
+                <td>{{member.get_gender_display}}</td>
+                <td>{{member.email}}</td>
+                <td>{{member.phone}}</td>
+                <td><a class="btn btn-outline-success btn-xs" href="{% url 'employee:user_detail' id=member.id %}">View</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<style>
+    .card{
+        height: 150px;
+        padding: 10px;
+        border: none;
+        float : left;
+    }
+    .card .card-inner{
+        border-radius: 5px;
+        padding-top:20px;
+        padding-bottom:10px;
+
+    }
+    .card .value{
+        width:100%;
+        text-align:center;
+        font-weight: 600;
+        font-size: 41px;
+        color: white;
+        height:75px;
+    }
+    .card .text{
+        width:100%;
+        text-align:center;
+        font-size: 17px;
+        color: white;
+    }
+   .btn-xs{
+        padding: 2px 10px;
+    }
+
+
+
+
+
+
+
+</style>
+{% endblock %}

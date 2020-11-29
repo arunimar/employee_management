@@ -1,0 +1,33 @@
+{% include 'base.html' %}
+
+{% block content %}
+<div class="container" style="background: #f7f7f7;border: 1px solid #eaeaea;border-radius: 4px;overflow: hidden;width: 28em;
+    min-width: 300px;
+    margin: 100px auto;
+    height: auto;">
+    <div class="content" style="padding: 20px 20px 0;">
+        <form method="post" class="form" style="width: 100%;">
+            {% csrf_token %}
+            <div class="col-lg-12 form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" placeholder="Username" id="username"
+                       class="form-control"
+                       style="clear: both;padding: 8px;width: 100%;box-sizing: border-box;">
+            </div>
+            <div class="col-lg-12 form-group" >
+                <label for="password">Password</label>
+                <input type="password" name="password" placeholder="Password" id="password"
+                       class="form-control"
+                       style="clear: both;padding: 8px;width: 100%;box-sizing: border-box;">
+            </div>
+            <div id="err_msg" class="col-lg-12 text-danger form-group">
+                {{message}}
+            </div>
+            <div class="col-lg-12 form-group">
+                <input type="submit" class="btn btn-success" value="Login" style="margin: 0 auto;display: block;">
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
